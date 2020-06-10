@@ -4,7 +4,7 @@
 */
 import axios from 'axios'
 // export const baseURL = process.env.NODE_ENV === 'development' ? '/blog' : `${PROD_URL}blog/`
-export const baseURL = '/zb'
+export const baseURL = '/zb-api'
 
 export const timeout = 20000 // 设置超时时间
 

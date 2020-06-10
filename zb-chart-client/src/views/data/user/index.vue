@@ -12,7 +12,7 @@
         </el-table-column>
 
         <el-table-column label="最近一次消费时间" show-overflow-tooltip>
-          <template slot-scope="scope">{{scope.row.lastConsumptionTime}}</template>
+          <template slot-scope="scope">{{scope.row.lastConsumptionTime|allTimeFilter}}</template>
         </el-table-column>
 
         <el-table-column label="购买商品" show-overflow-tooltip>

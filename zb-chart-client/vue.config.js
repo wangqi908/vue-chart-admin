@@ -18,10 +18,10 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/zb': {
+      '/zb-api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        pathRewrite: { '^/zb/': '' }
+        pathRewrite: { '^/zb-api/': '' }
       }
     }
   },
