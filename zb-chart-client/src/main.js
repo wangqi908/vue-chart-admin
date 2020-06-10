@@ -2,8 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import filters from '@/filters'
+import { components } from '@/components'
 import '@/assets/css/index.scss'
 import './element-variables.scss'
+
+Vue.use(filters)
+Vue.use(components)
 
 import {
   Pagination,
