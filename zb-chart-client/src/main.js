@@ -6,9 +6,10 @@ import filters from '@/filters'
 import { components } from '@/components'
 import '@/assets/css/index.scss'
 import './element-variables.scss'
-
+import VCharts from 'v-charts'
 Vue.use(filters)
 Vue.use(components)
+Vue.use(VCharts)
 
 import {
   Pagination,

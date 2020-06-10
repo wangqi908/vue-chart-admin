@@ -98,3 +98,30 @@ export const searchReset = (searchData = {}) => {
   }
   return searchData
 }
+
+// 数组对象根据id去重
+export const sameTypeToGrouping = (arr, key) => {
+  let typeArr = []
+  let resArr = []
+  arr.forEach(ele => {
+    typeArr.push(ele[key])
+  })
+  typeArr = typeArr.filter((item, index, typeArr) => {
+    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+    return typeArr.indexOf(item, 0) === index
+  })
+  typeArr.forEach(element => {
+    let group = []
+    arr.forEach(ele => {
+      if (ele[key] == element) {
+        group.push(ele)
+      }
+    })
+    resArr.push({
+      [key]: element,
+      group
+    })
+  })
+
+  return resArr
+}
