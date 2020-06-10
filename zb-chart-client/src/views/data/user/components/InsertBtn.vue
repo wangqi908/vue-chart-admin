@@ -61,9 +61,7 @@ export default {
             }
             for (const key in obj) {
               const element = obj[key]
-              if (!element) {
-                obj[key] = ''
-              }
+              obj[key] = element ? (element + '').trim() : ''
             }
             let isObjValueAllEmpty = Object.values(obj).every(v => v === '') //判断对象的值全为空
             if (!isObjValueAllEmpty) outputs.push(obj)
