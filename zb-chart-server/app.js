@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const zbRouter = require('./routes/zb')
+const chartRouter = require('./routes/chart')
 
 const app = express()
 app.use(bodyParser.json({ limit: '50mb' }))
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/user', usersRouter)
 app.use('/zb', zbRouter)
+app.use('/chart', chartRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

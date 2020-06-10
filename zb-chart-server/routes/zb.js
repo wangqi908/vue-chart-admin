@@ -7,6 +7,20 @@ router.get('/', (req, res) => {
   res.send({ status: 200, data: 'ok' })
 })
 
+router.post('/list', (req, res) => {
+  ZbModel.find({}, { __v: 0 }, async (err, doc) => {
+    if (err) {
+      res.send({ code: 0, data: err })
+      return
+    }
+    if (!doc) {
+      res.send({ code: 0, msg: '未找到' })
+      return
+    }
+    res.send({ code: 200, data: doc })
+  })
+})
+
 router.post('/view', (req, res) => {
   let { _id } = req.body
   ZbModel.findOne({ _id }, { __v: 0 }, async (err, doc) => {
