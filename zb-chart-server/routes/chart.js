@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const UserModel = require('../db/user')
+const ZbModel = require('../db/zb')
 const { formatTime } = require('../utils')
 const SetData = require('../utils/SetData')
-let filters = {
+let userFilters = {
   __v: 0,
   _id: 0,
   userId: 0,
@@ -24,9 +25,18 @@ let filters = {
   interest: 0,
   lastConsumptionTime: 0
 }
+let zbFilters = {
+  __v: 0,
+  _id: 0,
+  userId: 0,
+  nickname: 0,
+  phone: 0,
+  email: 0,
+  address: 0
+}
 
 router.get('/user', (req, res) => {
-  UserModel.find({}, filters, async (err, doc) => {
+  UserModel.find({}, userFilters, async (err, doc) => {
     if (err) {
       res.send({ code: 0, data: err })
       return
@@ -48,6 +58,24 @@ router.get('/user', (req, res) => {
     let goodsData = setData.getGoodsData()
 
     res.send({ code: 200, data: { registerData, mapData, goodsData } })
+  })
+})
+
+router.post('/zb', (req, res) => {
+  ZbModel.find({}, zbFilters, async (err, doc) => {
+    if (err) {
+      res.send({ code: 0, data: err })
+      return
+    }
+    if (!doc) {
+      res.send({ code: 0, msg: '未找到' })
+      return
+    }
+
+    let list = JSON.parse(JSON.stringify(doc))
+    console.log(list)
+
+    res.send({ code: 200, data: list })
   })
 })
 

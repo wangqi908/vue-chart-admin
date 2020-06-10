@@ -4,7 +4,7 @@ module.exports = class SetData {
     this.list = list
   }
   getGoodsData() {
-    let groupArr = sameTypeToGrouping(this.list, 'province')
+    let groupArr = sameTypeToGrouping(this.list, 'goods')
     let rows = []
     groupArr.forEach(ele => {
       let group = ele.group
