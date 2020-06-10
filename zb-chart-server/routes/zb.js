@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-
 const ZbModel = require('../db/zb')
+const setPage = require('../utils/page').setPage
 
 router.get('/', (req, res) => {
   res.send({ status: 200, data: 'ok' })
@@ -27,5 +27,22 @@ router.post('/insert', async (req, res) => {
   ZbModel.insertMany(newList).then(data => {
     res.send({ status: 200, data: 'ok' })
   })
+})
+
+router.post('/page', async (req, res) => {
+  const { pageNum, pageSize, data } = req.body
+  try {
+    let pageData = {
+      pageNum,
+      pageSize
+    }
+    let filterArr = ['__v']
+    // 分页
+    const pageRes = await setPage(ZbModel, data, pageData, filterArr)
+    res.send({ code: 200, data: pageRes })
+  } catch (err) {
+    console.log(err)
+    res.send({ code: 0, err })
+  }
 })
 module.exports = router
