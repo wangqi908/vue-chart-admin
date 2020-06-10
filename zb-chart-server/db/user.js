@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   wechatNo: { type: String }, //微信号
   birthday: { type: String }, //生日
   gender: { type: String }, //性别
-  age: { type: Number }, //年龄
+  age: { type: String }, //年龄
   language: { type: String }, //语言
   country: { type: String }, //国家
   province: { type: String }, //省份

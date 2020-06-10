@@ -3,7 +3,7 @@
 const mongoose = require('./index.js')
 const Schema = mongoose.Schema
 const ZbSchema = new Schema({
-  userName: { type: String }, //用户姓名
+  username: { type: String }, //用户姓名
   nickname: { type: String }, //昵称
   phone: { type: String }, //手机号
   email: { type: String }, //邮箱

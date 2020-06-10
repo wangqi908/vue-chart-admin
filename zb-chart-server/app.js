@@ -3,12 +3,14 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-
+const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const zbRouter = require('./routes/zb')
 
 const app = express()
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
 app.use(logger('dev'))
 app.use(express.json())
