@@ -1,0 +1,56 @@
+// 颜色
+$bgc: #f9f7f7;
+$gray: #dbe2ef;
+$active: #3273dc;
+$activeHover: #4a88ec;
+$activeActive: #2260c4;
+$deep: #112d4e;
+$mainText: #4a4a4a;
+$titleText: #222222;
+$shadow: 0px 2px 12px 0px rgba(180, 180, 180, 0.5);
+
+$mainBgc: #f5f5f5;
+$headBgc: #496081;
+$menuBgc: #273952;
+$menuHoverBgc: #38556a;
+
+// 版心
+%page-common {
+  padding: 0 80px;
+  @media (max-width: 950px) {
+    padding: 0 20px;
+  }
+}
+%btn-common {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  &:hover {
+    background-color: #dbd9d9;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  &:active {
+    background-color: #adacac;
+  }
+}
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%blue-btn {
+  background-color: $active;
+  transition: all 0.4s;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: $activeHover;
+  }
+  &:active {
+    background-color: $activeActive;
+  }
+}
