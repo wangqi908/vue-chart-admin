@@ -34,10 +34,10 @@ router.post('/insert', async (req, res) => {
   let { list } = req.body
   const allData = await UserModel.find({})
 
-  // 根据enterTime判断,防止重复插入
+  // 根据userId判断,防止重复插入
   let newList = []
   list.forEach(newItem => {
-    let flag = allData.find(oldItem => oldItem.enterTime === newItem.enterTime)
+    let flag = allData.find(oldItem => oldItem.userId === newItem.userId)
     if (!flag) newList.push(newItem)
   })
 

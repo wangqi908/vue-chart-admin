@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
 router.post('/view', (req, res) => {
   let { _id } = req.body
   ZbModel.findOne({ _id }, { __v: 0 }, async (err, doc) => {
-    console.log(err)
     if (err) {
       res.send({ code: 0, data: err })
       return
