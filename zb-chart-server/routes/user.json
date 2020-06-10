@@ -1,0 +1,25 @@
+{
+  "add": {
+    "userId": "234324",
+    "nickname": "昵称",
+    "phone": "手机号",
+    "latestNumber": "最近采集号码",
+    "email": "邮箱",
+    "wechatNo": "微信号",
+    "birthday": "生日",
+    "gender": "性别",
+    "age": "23",
+    "language": "语言",
+    "country": "国家",
+    "province": "省份",
+    "city": "城市",
+    "address": "地址",
+    "industry ": "行业",
+    "company": "公司",
+    "interest": "兴趣",
+    "registerTime": "1591754465965",
+    "consumptionAmount": "234.56",
+    "lastConsumptionTime": "1591754465965",
+    "goods": "购买商品"
+  }
+}

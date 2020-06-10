@@ -1,0 +1,12 @@
+{
+  "add": {
+    "userName": "用户姓名",
+    "nickname": "昵称",
+    "phone": "手机号",
+    "email": "邮箱",
+    "address": "地址",
+    "onlineTime": "总在线时长",
+    "studyTime": "学习时长",
+    "enterTime": "首次进入时间"
+  }
+}
