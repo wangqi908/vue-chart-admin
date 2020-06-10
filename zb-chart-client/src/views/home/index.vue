@@ -1,16 +1,18 @@
 <template>
   <div>
     <p>index</p>
-    <Map :data="userList" class="map-box" />
-    <Goods :data="userList" class="goods-box" />
+    <!-- <Map :data="userList" class="map-box" />
+    <Goods :data="userList" class="goods-box" />-->
+    <Register :data="userList" class="register-box" />
   </div>
 </template>
 
 <script>
 import { userListReq } from '@api'
-import { Map, Goods } from './components'
+import { Map, Goods, Register } from './components'
 export default {
-  components: { Map, Goods },
+  // eslint-disable-next-line vue/no-unused-components
+  components: { Map, Goods, Register },
   data() {
     return {
       userList: []
