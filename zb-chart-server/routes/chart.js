@@ -61,22 +61,37 @@ router.get('/user', (req, res) => {
   })
 })
 
-router.post('/zb', (req, res) => {
-  ZbModel.find({}, zbFilters, async (err, doc) => {
+router.post('/zb', async (req, res) => {
+  let { startTime, endTime } = req.body
+  let query = {}
+  // 如果传查询条件,则使用查询条件,否则默认查询最近的30天
+  if (startTime && endTime) {
+    query = { enterTime: { $gte: startTime, $lte: endTime } }
+  } else {
+    let lastOne = await ZbModel.find({}, zbFilters).limit(1).sort({ enterTime: -1 })
+    let _endTime = lastOne[0].enterTime
+    let _startTime = _endTime * 1 - 60 * 60 * 24 * 30 * 1000
+    query = { enterTime: { $gte: _startTime, $lte: _endTime } }
+  }
+  ZbModel.find(query, zbFilters, async (err, doc) => {
     if (err) {
       res.send({ code: 0, data: err })
       return
     }
     if (!doc) {
-      res.send({ code: 0, msg: '未找到' })
+      res.send({ code: 0, data: '未找到' })
       return
     }
 
     let list = JSON.parse(JSON.stringify(doc))
-    console.log(list)
+    list.forEach(ele => {
+      ele.enterTime = formatTime(ele.enterTime, 'YMD')
+    })
 
-    res.send({ code: 200, data: list })
-  })
+    let setData = new SetData(list)
+    let onlineUserNumber = setData.getOnlineUserNumber()
+    res.send({ code: 200, data: { onlineUserNumber } })
+  }).sort({ enterTime: -1 })
 })
 
 module.exports = router
