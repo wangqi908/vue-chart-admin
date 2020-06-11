@@ -1,5 +1,11 @@
 <template>
   <div class="page-box">
+    <SearchBox :propSearchData.sync="searchData">
+      <div class="getCenter">
+        <el-button type="primary" @click="search">搜索</el-button>
+        <el-button type="primary" @click="reset">重置</el-button>
+      </div>
+    </SearchBox>
     <div class="table">
       <div class="table-btn">
         <InsertBtn @sucess="sucess" />
@@ -44,7 +50,9 @@ export default {
   components: { InsertBtn },
   data() {
     return {
-      searchData: {}
+      searchData: {
+        nickname: ''
+      }
     }
   },
   methods: {
@@ -59,10 +67,13 @@ export default {
     //请求表格数据
     async renderTable() {
       let { pageNum, pageSize } = this
+      let { nickname } = this.searchData
       let dataObj = {
         pageSize,
         pageNum,
-        data: {}
+        data: {
+          nickname
+        }
       }
       const res = await userPageReq(dataObj)
       if (res.data.code == 200) {
