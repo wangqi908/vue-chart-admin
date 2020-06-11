@@ -5,6 +5,7 @@
 import axios from 'axios'
 // export const baseURL = process.env.NODE_ENV === 'development' ? '/blog' : `${PROD_URL}blog/`
 export const baseURL = '/zb-api'
+import { showFullScreenLoading, tryHideFullScreenLoading, endLoading } from './loading'
 
 export const timeout = 20000 // 设置超时时间
 
@@ -13,18 +14,25 @@ axios.defaults.timeout = timeout
 
 axios.interceptors.request.use(
   config => {
+    showFullScreenLoading()
+    setTimeout(() => {
+      endLoading()
+    }, timeout)
     return config
   },
   error => {
+    tryHideFullScreenLoading()
     return Promise.reject(error)
   }
 )
 
 axios.interceptors.response.use(
   response => {
+    tryHideFullScreenLoading()
     return response
   },
   error => {
+    tryHideFullScreenLoading()
     return Promise.reject(error)
   }
 )

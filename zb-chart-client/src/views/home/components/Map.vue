@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>用户地区分布</p>
+    <p>注册用户地区分布</p>
 
     <ve-map :data="data" :settings="chartSettings"></ve-map>
   </div>
