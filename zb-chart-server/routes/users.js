@@ -68,8 +68,18 @@ router.post('/page', async (req, res) => {
       pageSize
     }
     let filterArr = ['__v']
+
+    let sort = { registerTime: -1 }
+    let pageParams = {
+      Model: UserModel,
+      data,
+      pageData,
+      filterArr,
+      sort
+    }
+
     // 分页
-    const pageRes = await setPage(UserModel, data, pageData, filterArr)
+    const pageRes = await setPage(pageParams)
     res.send({ code: 200, data: pageRes })
   } catch (err) {
     res.send({ code: 0, err })

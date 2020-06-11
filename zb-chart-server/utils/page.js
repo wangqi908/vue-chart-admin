@@ -49,8 +49,12 @@ data  查询参数
 pageData pageSize每页返回数量 pageNum页数
 filterArr 设置过滤掉的熟悉 ['createTime', 'updateTime', 'password', '__v']
 */
-const setPage = (Model, data, pageData, filterArr = []) => {
-  let filter = setFilter(filterArr)
+// const setPage = (Model, data, pageData, filterArr = []) => {
+const setPage = params => {
+  let { Model, data, pageData, filterArr, sort } = params
+  filterArr = filterArr ? filterArr : []
+  sort = sort ? sort : { _id: -1 }
+  let filter = setFilter((filterArr = []))
   let { pageNum, pageSize } = pageData
   //查询条件
   let where = setQuery(data)
@@ -67,7 +71,7 @@ const setPage = (Model, data, pageData, filterArr = []) => {
     })
       .skip(pageNum * pageSize)
       .limit(pageSize)
-      .sort({ _id: -1 })
+      .sort(sort)
   })
 }
 

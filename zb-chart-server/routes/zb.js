@@ -67,8 +67,16 @@ router.post('/page', async (req, res) => {
       pageSize
     }
     let filterArr = ['__v']
+    let sort = { enterTime: -1 }
+    let pageParams = {
+      Model: ZbModel,
+      data,
+      pageData,
+      filterArr,
+      sort
+    }
     // 分页
-    const pageRes = await setPage(ZbModel, data, pageData, filterArr)
+    const pageRes = await setPage(pageParams)
     res.send({ code: 200, data: pageRes })
   } catch (err) {
     console.log(err)
