@@ -37,17 +37,23 @@
         :currentPage.sync="currentPage"
         @current-change="handleCurrentChange"
       />
+      <component
+        :visible.sync="showDialog"
+        :is="currentCom"
+        :id="activeId"
+        @before-close="handleClose"
+      ></component>
     </div>
   </div>
 </template>
 
 <script>
 import { userPageReq } from '@api'
-import { InsertBtn } from './components'
+import { InsertBtn, CheckDialog } from './components'
 import pageMixin from '@/mixin/pageMixin'
 export default {
   mixins: [pageMixin],
-  components: { InsertBtn },
+  components: { InsertBtn, CheckDialog },
   data() {
     return {
       searchData: {
@@ -56,8 +62,10 @@ export default {
     }
   },
   methods: {
-    check(val) {
-      console.log(val)
+    check(row) {
+      this.activeId = row._id
+      this.showDialog = true
+      this.currentCom = CheckDialog
     },
 
     sucess() {

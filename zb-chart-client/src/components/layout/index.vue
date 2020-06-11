@@ -59,7 +59,6 @@ body {
   display: flex;
   flex-direction: column;
   .content {
-    margin: 10px;
     flex: 1;
   }
 }
