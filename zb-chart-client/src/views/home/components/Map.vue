@@ -2,12 +2,14 @@
   <div>
     <p>注册用户地区分布</p>
 
-    <ve-map :data="data" :settings="chartSettings"></ve-map>
+    <VeLine :data="data" :settings="chartSettings"></VeLine>
   </div>
 </template>
 
 <script>
+import VeLine from 'v-charts/lib/map.common'
 export default {
+  components: { VeLine },
   data() {
     return {
       chartSettings: {

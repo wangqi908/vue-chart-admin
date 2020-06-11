@@ -1,12 +1,14 @@
 <template>
   <div>
     <p>购买商品分布</p>
-    <ve-pie :data="data" :legend-visible="false"></ve-pie>
+    <VeLine :data="data" :legend-visible="false"></VeLine>
   </div>
 </template>
 
 <script>
+import VeLine from 'v-charts/lib/pie.common'
 export default {
-  props: ['data']
+  props: ['data'],
+  components: { VeLine }
 }
 </script>

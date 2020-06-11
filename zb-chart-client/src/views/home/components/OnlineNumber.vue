@@ -13,13 +13,15 @@
       ></el-date-picker>
       <el-button class="btn" type="primary" plain @click="reset">重置</el-button>
     </div>
-    <ve-histogram :data="chartData"></ve-histogram>
+    <VeLine :data="chartData"></VeLine>
   </div>
 </template>
 
 <script>
+import VeLine from 'v-charts/lib/histogram.common'
 import { chartZbReq } from '@api'
 export default {
+  components: { VeLine },
   data() {
     return {
       chartData: {},

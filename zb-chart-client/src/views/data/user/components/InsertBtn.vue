@@ -80,6 +80,7 @@ export default {
     async upload(list) {
       const res = await userInsertReq({ list })
       if (res.data.status === 200) {
+        this.$message.success('导入成功')
         this.$emit('sucess')
       }
     }
