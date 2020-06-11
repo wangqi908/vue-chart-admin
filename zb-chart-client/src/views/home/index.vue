@@ -1,18 +1,9 @@
 <template>
   <div>
-    <!-- <Map :data="mapData" class="map-box" />
+    <Map :data="mapData" class="map-box" />
     <Goods :data="goodsData" class="goods-box" />
-    <Register :data="registerData" class="register-box" />-->
+    <Register :data="registerData" class="register-box" />
     <OnlineNumber />
-    <el-date-picker
-      v-model="value2"
-      type="daterange"
-      value-format="timestamp"
-      range-separator="至"
-      start-placeholder="开始日期"
-      end-placeholder="结束日期"
-    ></el-date-picker>
-    {{value2}}
   </div>
 </template>
 
@@ -26,8 +17,7 @@ export default {
     return {
       registerData: {},
       mapData: {},
-      goodsData: {},
-      value2: []
+      goodsData: {}
     }
   },
   methods: {

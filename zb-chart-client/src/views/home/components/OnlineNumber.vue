@@ -1,33 +1,48 @@
 <template>
-  <ve-histogram :data="chartData"></ve-histogram>
+  <div>
+    <div>
+      <el-date-picker
+        v-model="value"
+        type="daterange"
+        value-format="timestamp"
+        range-separator="至"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期"
+        @change="change"
+      ></el-date-picker>
+      <el-button type="primary" plain @click="reset">重置</el-button>
+    </div>
+    <ve-histogram :data="chartData"></ve-histogram>
+  </div>
 </template>
 
 <script>
+import { chartZbReq } from '@api'
 export default {
   data() {
     return {
-      chartData: {
-        columns: ['日期', '在线人数'],
-        rows: [
-          {
-            在线人数: 1523,
-            日期: '01/01'
-          },
-          {
-            在线人数: 1223,
-            日期: '01/02'
-          },
-          {
-            在线人数: 2123,
-            日期: '01/03'
-          },
-          {
-            在线人数: 4123,
-            日期: '01/04'
-          }
-        ]
-      }
+      chartData: {},
+      value: []
     }
+  },
+  methods: {
+    async getData(query = {}) {
+      const res = await chartZbReq(query)
+      let { onlineUserNumber } = res.data.data
+      if (onlineUserNumber.rows.length === 0) this.$message('无数据')
+      this.chartData = onlineUserNumber
+    },
+    change() {
+      let [startTime, endTime] = this.value
+      this.getData({ startTime, endTime })
+    },
+    reset() {
+      this.value = []
+      this.getData()
+    }
+  },
+  created() {
+    this.getData()
   }
 }
 </script>

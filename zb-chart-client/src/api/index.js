@@ -12,3 +12,4 @@ export const zbInsertReq = params => req('/zb/insert', params, 'post') //直播�
 
 //图表
 export const chartUserReq = () => req('/chart/user') //用户图表
+export const chartZbReq = params => req('/chart/zb', params, 'post') //直播图表
