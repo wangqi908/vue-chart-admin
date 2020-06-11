@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>在线人数统计报表</p>
-    <div>
+    <div class="option-box">
       <el-date-picker
         v-model="value"
         type="daterange"
@@ -11,7 +11,7 @@
         end-placeholder="结束日期"
         @change="change"
       ></el-date-picker>
-      <el-button type="primary" plain @click="reset">重置</el-button>
+      <el-button class="btn" type="primary" plain @click="reset">重置</el-button>
     </div>
     <ve-histogram :data="chartData"></ve-histogram>
   </div>
@@ -47,3 +47,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.option-box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  .btn {
+    margin-left: 30px;
+  }
+}
+</style>
