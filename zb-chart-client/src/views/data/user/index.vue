@@ -84,7 +84,7 @@ export default {
         }
       }
       const res = await userPageReq(dataObj)
-      if (res.data.code == 200) {
+      if (res.data.status == 200) {
         this.info = res.data.data
       }
     }

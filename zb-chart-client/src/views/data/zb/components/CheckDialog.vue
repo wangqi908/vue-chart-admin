@@ -33,7 +33,7 @@ export default {
   methods: {
     async getInfo() {
       const res = await zbViewReq({ _id: this.id })
-      if (res.data.code === 200) {
+      if (res.data.status === 200) {
         this.ruleForm = res.data.data
       }
     }

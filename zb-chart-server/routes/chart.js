@@ -38,11 +38,11 @@ let zbFilters = {
 router.get('/user', (req, res) => {
   UserModel.find({}, userFilters, async (err, doc) => {
     if (err) {
-      res.send({ code: 0, data: err })
+      res.send({ status: 0, data: err })
       return
     }
     if (!doc) {
-      res.send({ code: 0, msg: '未找到' })
+      res.send({ status: 0, data: '未找到' })
       return
     }
 
@@ -57,7 +57,7 @@ router.get('/user', (req, res) => {
     let mapData = setData.getMapData()
     let goodsData = setData.getGoodsData()
 
-    res.send({ code: 200, data: { registerData, mapData, goodsData } })
+    res.send({ status: 200, data: { registerData, mapData, goodsData } })
   }).sort({ registerTime: 1 })
 })
 
@@ -75,11 +75,11 @@ router.post('/zb', async (req, res) => {
   }
   ZbModel.find(query, zbFilters, async (err, doc) => {
     if (err) {
-      res.send({ code: 0, data: err })
+      res.send({ status: 0, data: err })
       return
     }
     if (!doc) {
-      res.send({ code: 0, data: '未找到' })
+      res.send({ status: 0, data: '未找到' })
       return
     }
 
@@ -90,7 +90,7 @@ router.post('/zb', async (req, res) => {
 
     let setData = new SetData(list)
     let onlineUserNumber = setData.getOnlineUserNumber()
-    res.send({ code: 200, data: { onlineUserNumber } })
+    res.send({ status: 200, data: { onlineUserNumber } })
   }).sort({ enterTime: 1 })
 })
 

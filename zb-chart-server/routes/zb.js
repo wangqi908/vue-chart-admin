@@ -10,14 +10,14 @@ router.get('/', (req, res) => {
 router.post('/list', (req, res) => {
   ZbModel.find({}, { __v: 0 }, async (err, doc) => {
     if (err) {
-      res.send({ code: 0, data: err })
+      res.send({ status: 0, data: err })
       return
     }
     if (!doc) {
-      res.send({ code: 0, msg: '未找到' })
+      res.send({ status: 0, data: '未找到' })
       return
     }
-    res.send({ code: 200, data: doc })
+    res.send({ status: 200, data: doc })
   })
 })
 
@@ -25,15 +25,15 @@ router.post('/view', (req, res) => {
   let { _id } = req.body
   ZbModel.findOne({ _id }, { __v: 0 }, async (err, doc) => {
     if (err) {
-      res.send({ code: 0, data: err })
+      res.send({ status: 0, data: err })
       return
     }
     if (!doc) {
-      res.send({ code: 0, msg: '未找到' })
+      res.send({ status: 0, data: '未找到' })
       return
     }
 
-    res.send({ code: 200, data: doc })
+    res.send({ status: 200, data: doc })
   })
 })
 
@@ -77,10 +77,10 @@ router.post('/page', async (req, res) => {
     }
     // 分页
     const pageRes = await setPage(pageParams)
-    res.send({ code: 200, data: pageRes })
+    res.send({ status: 200, data: pageRes })
   } catch (err) {
     console.log(err)
-    res.send({ code: 0, err })
+    res.send({ status: 0, data: err })
   }
 })
 module.exports = router
