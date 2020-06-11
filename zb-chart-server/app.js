@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
-app.use('/user', usersRouter)
-app.use('/zb', zbRouter)
-app.use('/chart', chartRouter)
+app.use('/zb-api', indexRouter)
+app.use('/zb-api/user', usersRouter)
+app.use('/zb-api/zb', zbRouter)
+app.use('/zb-api/chart', chartRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -5,9 +5,11 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
+const { BASE_DIR, PROD_URL } = require('./config')
+const publicPath = isProduction ? `/${BASE_DIR}` : '/'
 module.exports = {
-  publicPath: './',
-  outputDir: 'zb',
+  publicPath,
+  outputDir: BASE_DIR,
   assetsDir: 'static',
   productionSourceMap: false,
   devServer: {
@@ -19,7 +21,7 @@ module.exports = {
     },
     proxy: {
       '/zb-api': {
-        target: 'http://localhost:3000',
+        target: PROD_URL,
         changeOrigin: true,
         pathRewrite: { '^/zb-api/': '' }
       }

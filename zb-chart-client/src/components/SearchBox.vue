@@ -56,7 +56,6 @@ export default {
   },
   created() {
     this.activePage = this.$route.name
-    console.log(this.$route.name)
     this.title = this.$route.meta.title || ''
   },
   watch: {

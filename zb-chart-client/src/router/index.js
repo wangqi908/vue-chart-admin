@@ -42,8 +42,12 @@ const routes = [
     type: 'notFound'
   }
 ]
+const { BASE_DIR } = require('../../config')
+const base = process.env.NODE_ENV === 'production' ? `/${BASE_DIR}` : '/'
 
 const router = new VueRouter({
+  base,
+  mode: 'history',
   routes
 })
 // 多次点击相同路径报错处理

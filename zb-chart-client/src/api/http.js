@@ -3,11 +3,11 @@
 函数返回的是promise 对象
 */
 import axios from 'axios'
-// export const baseURL = process.env.NODE_ENV === 'development' ? '/blog' : `${PROD_URL}blog/`
-export const baseURL = '/zb-api'
+const { PROD_URL } = require('../../config')
 import { showFullScreenLoading, tryHideFullScreenLoading, endLoading } from './loading'
 
-export const timeout = 20000 // 设置超时时间
+const baseURL = process.env.NODE_ENV === 'development' ? '/zb-api' : `${PROD_URL}`
+const timeout = 20000 // 设置超时时间
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = timeout
