@@ -73,7 +73,7 @@ module.exports = class SetData {
     let rows = []
     groupArr.forEach(ele => {
       let group = ele.group
-      rows.unshift({
+      rows.push({
         日期: ele.enterTime,
         在线人数: group.length
       })

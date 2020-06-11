@@ -51,14 +51,14 @@ router.get('/user', (req, res) => {
     list.forEach(ele => {
       ele.registerTime = formatTime(ele.registerTime, 'YMD')
     })
-
+    console.log(list)
     let setData = new SetData(list)
     let registerData = setData.getRegisterData()
     let mapData = setData.getMapData()
     let goodsData = setData.getGoodsData()
 
     res.send({ code: 200, data: { registerData, mapData, goodsData } })
-  })
+  }).sort({ registerTime: 1 })
 })
 
 router.post('/zb', async (req, res) => {
@@ -91,7 +91,7 @@ router.post('/zb', async (req, res) => {
     let setData = new SetData(list)
     let onlineUserNumber = setData.getOnlineUserNumber()
     res.send({ code: 200, data: { onlineUserNumber } })
-  }).sort({ enterTime: -1 })
+  }).sort({ enterTime: 1 })
 })
 
 module.exports = router
