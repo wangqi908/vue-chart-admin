@@ -51,7 +51,6 @@ router.get('/user', (req, res) => {
     list.forEach(ele => {
       ele.registerTime = formatTime(ele.registerTime, 'YMD')
     })
-    console.log(list)
     let setData = new SetData(list)
     let registerData = setData.getRegisterData()
     let mapData = setData.getMapData()
